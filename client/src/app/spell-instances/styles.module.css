@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5vw;
+}
+
+.instanceSearchForm,
+.addInstanceForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2vw;
+}
+.instanceSearchContainer {
+  text-align: center;
+}
+
+.addInstanceContainer {
+  text-align: center;
+}
+
+.displayInstancesContainer {
+  width: 100%;
+}
+.displayInstancesTable {
+  width: 100%;
+  text-align: center;
+}
+
+.displayInstancesContainer table,
+.displayInstancesTable th,
+.displayInstancesTable td {
+  border: 1px solid black;
+}

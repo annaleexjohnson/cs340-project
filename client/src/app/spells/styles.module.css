@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5vw;
+}
+
+.spellSearchForm,
+.addSpellForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2vw;
+}
+.spellSearchContainer {
+  text-align: center;
+}
+
+.addSpellContainer {
+  text-align: center;
+}
+
+.displaySpellsContainer {
+  width: 100%;
+}
+.displaySpellsTable {
+  width: 100%;
+  text-align: center;
+}
+
+.displaySpellsContainer table,
+.displaySpellsTable th,
+.displaySpellsTable td {
+  border: 1px solid black;
+}

@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5vw;
+}
+
+.addTypeForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2vw;
+}
+
+.addTypeContainer {
+  text-align: center;
+}
+
+.displayTypesContainer {
+  width: 100%;
+}
+.displayTypesTable {
+  width: 100%;
+  text-align: center;
+}
+
+.displayTypesContainer table,
+.displayTypesTable th,
+.displayTypesTable td {
+  border: 1px solid black;
+}

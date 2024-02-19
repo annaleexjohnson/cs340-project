@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5vw;
+}
+
+.wizardSearchForm,
+.addWizardForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2vw;
+}
+.wizardSearchContainer {
+  text-align: center;
+}
+
+.addWizardContainer {
+  text-align: center;
+}
+
+.displayWizardsContainer {
+  width: 100%;
+}
+.displayWizardsTable {
+  width: 100%;
+  text-align: center;
+}
+
+.displayWizardsContainer table,
+.displayWizardsTable th,
+.displayWizardsTable td {
+  border: 1px solid black;
+}
