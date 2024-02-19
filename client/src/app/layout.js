@@ -1,8 +1,18 @@
-import { Jolly_Lodger } from "next/font/google";
 import "./globals.css";
+import { Lato, Bigelow_Rules } from "next/font/google";
 import Navbar from "./components/navBar/Navbar";
 
-const jollyLodger = Jolly_Lodger({ subsets: ["latin"], weight: ["400"] });
+const lato = Lato({
+  subsets: ["latin"],
+  weight: ["100", "300", "400", "700", "900"],
+  variable: "--font-lato",
+});
+
+const bigelowRules = Bigelow_Rules({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-bigelow",
+});
 
 export const metadata = {
   title: "CS340 - Group 78",
@@ -12,7 +22,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={jollyLodger.className}>
+      <body className={`${lato.variable} ${bigelowRules.variable}`}>
         <Navbar />
         {children}
       </body>
