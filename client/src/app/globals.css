@@ -1,3 +1,21 @@
+@font-face {
+  font-family: HarryP;
+  src: url("./fonts/harry_p/HARRYP__.TTF") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --gryffindor-red: #740001;
+  --gryffindor-yellow: #eeba30;
+  --slytherin-green: #2a623d;
+  --slytherin-silver: #aaaaaa;
+  --ravenclaw-blue: #222f5b;
+  --ravenclaw-gold: #946b2d;
+  --hufflepuff-canary: #f0c75e;
+  --hufflepuff-rbow: #372e29;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
