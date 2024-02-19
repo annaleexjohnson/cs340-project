@@ -1,6 +1,17 @@
 .main {
 }
 
-.overview p {
-  margin: 2.5vw 0;
+.overview {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3vw;
+  padding: 5vw;
+  margin: 5vw 0;
+  background-color: var(--muted-navy);
+  border: var(--gryffindor-yellow) 0.1rem solid;
+  line-height: 2rem;
 }

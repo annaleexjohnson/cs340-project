@@ -4,8 +4,9 @@ import styles from "./page.module.css";
 export default function Home() {
   return (
     <main className={styles.main}>
-      <h1>CS 340 and the Database of Divination</h1>
       <div className={styles.overview}>
+        <h1>CS 340 and the Database of Divination</h1>
+
         <p>
           In the enchanting world of Harry Potter, mastery of spells holds
           incredible importance. With the repertoire exceeding 200 spells which

@@ -13,7 +13,8 @@
   --ravenclaw-blue: #222f5b;
   --ravenclaw-gold: #946b2d;
   --hufflepuff-canary: #f0c75e;
-  --hufflepuff-rbow: #372e29;
+  --hufflepuff-brown: #372e29;
+  --muted-navy: #27363f;
 }
 
 * {
@@ -32,10 +33,22 @@ body {
   margin: 0 10vw;
   font-size: 1.25rem;
   font-family: var(--font-lato);
+  background-color: #27363f;
+  background-image: url("../../public/bg-image.avif");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
 }
 
 h1 {
   font-family: HarryP;
+  color: white;
+  text-align: center;
+  color: var(--hufflepuff-canary);
+  letter-spacing: 0.2rem;
+  font-size: 4rem;
+  line-height: 2.75rem;
 }
 
 h2,
