@@ -1,6 +1,6 @@
 import { Jolly_Lodger } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/navBar/Navbar";
+import Navbar from "./components/navBar/Navbar";
 
 const jollyLodger = Jolly_Lodger({ subsets: ["latin"], weight: ["400"] });
 
