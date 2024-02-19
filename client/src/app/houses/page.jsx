@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import styles from "./styles.module.css";
-import HouseDisplay from "@/components/houseDisplay/houseDisplay";
 
 export default function Houses() {
   // const [houseInfo, setHouseInfo] = useState({});
