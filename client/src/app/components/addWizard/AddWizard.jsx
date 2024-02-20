@@ -1,9 +1,24 @@
-import React, { useState } from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 import styles from "./styles.module.css";
 
 const AddWizard = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [houses, setHouses] = useState([]);
+
+  useEffect(() => {
+    const fetchHouseNames = async () => {
+      const res = await fetch("/api/wizardInfo", {
+        method: "GET",
+      });
+      const houses = await res.json();
+      console.log(houses);
+      setHouses(houses);
+    };
+
+    fetchHouseNames();
+  }, []);
 
   const addWizard = (e) => {
     e.preventDefault();
@@ -49,8 +64,9 @@ const AddWizard = () => {
           <div className={styles.formInputGroup}>
             <label>House:</label>
             <select>
-              <option>test</option>
-              <option>test</option>
+              {houses.map((house) => {
+                return <option>{house.house_name}</option>;
+              })}
             </select>
           </div>
 
