@@ -5,7 +5,7 @@ const db = pool;
 // Get list of wizards
 export async function GET(req) {
   const selectQuery =
-    "SELECT wizard_name, wizard_graduated, wizard_house FROM Wizards;";
+    "SELECT Wizards.wizard_name, Wizards.wizard_graduated, Houses.house_name FROM Wizards, Houses WHERE Wizards.wizard_house = Houses.house_id GROUP BY Wizards.wizard_name;";
 
   const conn = await db.getConnection();
   const wizards = await conn.query(selectQuery);

@@ -27,7 +27,7 @@ export default function Wizards() {
         <tr>
           <td>{name}</td>
           <td>{house}</td>
-          <td>{graduated}</td>
+          <td>{graduated ? "Yes" : "No"}</td>
           <td>
             <MdModeEdit />
           </td>
@@ -64,7 +64,7 @@ export default function Wizards() {
                   return (
                     <WizardRow
                       name={wizard.wizard_name}
-                      house={wizard.wizard_house}
+                      house={wizard.house_name}
                       graduated={wizard.wizard_graduated}
                     />
                   );
