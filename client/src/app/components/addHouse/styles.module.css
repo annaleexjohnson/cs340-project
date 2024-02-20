@@ -1,0 +1,108 @@
+.addHouseContainer,
+.addHouseForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.addHouseContainer {
+  width: 100%;
+  background-color: var(--muted-navy);
+  padding: 5vw 0;
+  border: var(--gryffindor-yellow) 0.1rem solid;
+}
+
+.addHouseContainer h2 {
+  margin-bottom: 2vw;
+}
+
+.addHouseForm {
+  width: 80%;
+}
+
+.formInputGroup {
+  width: 100%;
+}
+
+.addHouseForm label {
+  align-self: flex-start;
+}
+
+/* .addHouseForm input {
+  width: 100%;
+  margin-bottom: 5vw;
+  border: var(--gryffindor-yellow) 0.2rem solid;
+  padding: 2%;
+} */
+
+.addHouseForm button {
+  padding: 2%;
+  background-color: var(--hufflepuff-canary);
+  border: var(--ravenclaw-gold) 0.4rem solid;
+  color: var(--muted-navy);
+  width: 10rem;
+  height: 3rem;
+  font-size: 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.addHouseForm button:hover {
+  color: aliceblue;
+}
+
+/* ------ Media Queries ------ */
+
+/* xsmall */
+@media only screen and (max-width: 575px) {
+}
+
+/* small */
+@media only screen and (min-width: 576px) {
+}
+
+/* medium */
+@media only screen and (min-width: 768px) {
+  .addHouseContainer {
+    max-width: 50vw;
+  }
+}
+
+/* large */
+@media only screen and (min-width: 992px) {
+  .addHouseContainer,
+  .addHouseForm {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .addHouseContainer {
+    padding: 2vw 0;
+  }
+
+  .addHouseForm {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-evenly;
+    gap: 2rem;
+    padding: 0 5vw;
+  }
+  .addHouseForm input {
+    margin: 0;
+    padding: 0.5rem;
+  }
+  .addHouseForm button {
+    width: 20rem;
+  }
+}
+
+/* xlarge */
+@media only screen and (min-width: 1200px) {
+}
+
+/* xxlarge */
+@media only screen and (min-width: 1400) {
+}

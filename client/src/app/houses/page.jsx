@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import styles from "./styles.module.css";
+import AddHouse from "../components/addHouse/AddHouse";
 
 export default function Houses() {
   // const [houseInfo, setHouseInfo] = useState({});
@@ -31,7 +32,7 @@ export default function Houses() {
       <div className={styles.container}>
         <h1>Hogwarts Houses</h1>
 
-        <div className={styles.addHouseContainer}>
+        {/* <div className={styles.addHouseContainer}>
           <h3>Add a House</h3>
 
           <form className={styles.addHouseForm}>
@@ -45,7 +46,10 @@ export default function Houses() {
             </div>
             <button>Add House</button>
           </form>
-        </div>
+        </div> */}
+
+        <AddHouse />
+
         <div className={styles.displayHousesContainer}>
           <h3>List of Houses:</h3>
           <table className={styles.displayHousesTable}>

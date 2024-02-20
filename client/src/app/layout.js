@@ -1,17 +1,17 @@
 import "./globals.css";
-import { Lato, Bigelow_Rules } from "next/font/google";
+import { Lato, Bigelow_Rules, Exo_2 } from "next/font/google";
 import Navbar from "./components/navBar/Navbar";
-
-const lato = Lato({
-  subsets: ["latin"],
-  weight: ["100", "300", "400", "700", "900"],
-  variable: "--font-lato",
-});
 
 const bigelowRules = Bigelow_Rules({
   subsets: ["latin"],
   weight: ["400"],
   variable: "--font-bigelow",
+});
+
+const exo = Exo_2({
+  subsets: ["latin"],
+  weight: ["100", "300", "400", "700", "900"],
+  variable: "--font-exo",
 });
 
 export const metadata = {
@@ -22,7 +22,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${lato.variable} ${bigelowRules.variable}`}>
+      <body className={`${bigelowRules.variable} ${exo.variable}`}>
         <Navbar />
         {children}
       </body>

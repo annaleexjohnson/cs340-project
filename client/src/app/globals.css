@@ -32,7 +32,7 @@ body {
 body {
   margin: 0 10vw;
   font-size: 1.25rem;
-  font-family: var(--font-lato);
+  font-family: var(--font-exo), sans-serif;
   background-color: #27363f;
   background-image: url("../../public/bg-image.avif");
   background-position: center;
@@ -49,6 +49,7 @@ h1 {
   letter-spacing: 0.2rem;
   font-size: 4rem;
   line-height: 2.75rem;
+  margin: 2vw 0;
 }
 
 h2,
@@ -57,10 +58,77 @@ h4,
 h5 {
   font-family: var(--font-bigelow);
   letter-spacing: 0.1rem;
-  font-size: 2rem;
+  font-size: 2.5rem;
+  color: var(--gryffindor-yellow);
 }
 
 a {
   color: inherit;
   text-decoration: none;
+  font-family: inherit;
+}
+
+input {
+  font-family: inherit;
+  width: 100%;
+  margin-bottom: 5vw;
+  border: var(--gryffindor-yellow) 0.2rem solid;
+  padding: 2%;
+}
+
+input:focus {
+  outline: none;
+  border: #55aaff 0.2rem solid;
+}
+
+label {
+  font-weight: bold;
+}
+
+::placeholder {
+  font-family: inherit;
+  color: rgba(1, 1, 1, 0.4);
+}
+
+button {
+  font-family: HarryP;
+  cursor: pointer;
+}
+
+/* ------ Media Queries ------ */
+/* (based on Bootstrap Breakpoints) */
+
+/* xsmall */
+@media only screen and (max-width: 575px) {
+}
+
+/* small */
+@media only screen and (min-width: 576px) {
+}
+
+/* medium */
+@media only screen and (min-width: 768px) {
+}
+
+/* large */
+@media only screen and (min-width: 992px) {
+  h1 {
+    font-size: 5rem;
+    letter-spacing: 0.3rem;
+  }
+
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-size: 3rem;
+  }
+}
+
+/* xlarge */
+@media only screen and (min-width: 1200px) {
+}
+
+/* xxlarge */
+@media only screen and (min-width: 1400) {
 }
