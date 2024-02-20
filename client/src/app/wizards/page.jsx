@@ -2,99 +2,80 @@
 import React, { useState, useEffect } from "react";
 import styles from "./styles.module.css";
 import AddWizard from "../components/addWizard/AddWizard";
+import { MdDeleteForever, MdModeEdit } from "react-icons/md";
 
 export default function Wizards() {
+  const [wizards, setWizards] = useState([]);
+
+  // fetch wizards on page load
+  useEffect(() => {
+    const fetchWizards = async () => {
+      const res = await fetch("/api/wizardInfo", {
+        method: "GET",
+      });
+      const wizards = await res.json();
+      console.log(wizards);
+      setWizards(wizards);
+    };
+
+    fetchWizards();
+  }, []);
+
+  const WizardRow = ({ name, house, graduated }) => {
+    return (
+      <React.Fragment>
+        <tr>
+          <td>{name}</td>
+          <td>{house}</td>
+          <td>{graduated}</td>
+          <td>
+            <MdModeEdit />
+          </td>
+          <td>
+            <MdDeleteForever />
+          </td>
+        </tr>
+      </React.Fragment>
+    );
+  };
+
   return (
     <>
-      <div className={styles.container}>
-        <h1>Hogwarts Witch & Wizards</h1>
+      {wizards && (
+        <div className={styles.container}>
+          <h1>Hogwarts Witch & Wizards</h1>
 
-        <AddWizard />
+          <div className={styles.displayWizardsContainer}>
+            <h3>List of Witches & Wizards: </h3>
 
-        <div className={styles.wizardSearchContainer}>
-          <h3>Search for Witch/Wizard in Database</h3>
+            <table className={styles.displayWizardsTable}>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>House</th>
+                  <th>Graduated?</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
 
-          <form className={styles.wizardSearchForm}>
-            <div>
-              <label>Enter witch/wizard name:</label>
-              <input type="text" placeholder="Parry Hotter"></input>
-            </div>
+              <tbody>
+                {wizards.map((wizard) => {
+                  return (
+                    <WizardRow
+                      name={wizard.wizard_name}
+                      house={wizard.wizard_house}
+                      graduated={wizard.wizard_graduated}
+                    />
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
 
-            <button>Search</button>
-          </form>
+          <AddWizard />
         </div>
-
-        <div className={styles.displayWizardsContainer}>
-          <h3>List of Witches & Wizards: </h3>
-
-          <table className={styles.displayWizardsTable}>
-            <tbody>
-              <tr>
-                <th>Name</th>
-                <th>House</th>
-                <th>Graduated?</th>
-                <th>Edit</th>
-                <th>Delete</th>
-              </tr>
-              <tr>
-                <td>Harry Potter</td>
-                <td>Gryffindor</td>
-                <td>Yes</td>
-                <td>
-                  <button>Edit</button>
-                </td>
-                <td>
-                  <button>Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <td>Newton Scamander</td>
-                <td>Hufflepuff</td>
-                <td>Yes</td>
-                <td>
-                  <button>Edit</button>
-                </td>
-                <td>
-                  <button>Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <td>Draco Malfoy</td>
-                <td>Slytherin</td>
-                <td>Yes</td>
-                <td>
-                  <button>Edit</button>
-                </td>
-                <td>
-                  <button>Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <td>Sirius Black</td>
-                <td>Gryffindor</td>
-                <td>Yes</td>
-                <td>
-                  <button>Edit</button>
-                </td>
-                <td>
-                  <button>Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <td>Nymphadora Tonks</td>
-                <td>Hufflepuff</td>
-                <td>Yes</td>
-                <td>
-                  <button>Edit</button>
-                </td>
-                <td>
-                  <button>Delete</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+      )}
     </>
   );
 }

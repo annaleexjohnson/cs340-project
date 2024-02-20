@@ -9,7 +9,7 @@ const AddWizard = () => {
 
   useEffect(() => {
     const fetchHouseNames = async () => {
-      const res = await fetch("/api/wizardInfo", {
+      const res = await fetch("/api/houseInfo", {
         method: "GET",
       });
       const houses = await res.json();
