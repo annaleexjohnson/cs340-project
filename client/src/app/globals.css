@@ -15,6 +15,8 @@
   --hufflepuff-canary: #f0c75e;
   --hufflepuff-brown: #372e29;
   --muted-navy: #27363f;
+  --pure-gold: #bf9b30;
+  --charcoal: #1e1e1e;
 }
 
 * {
@@ -93,6 +95,44 @@ label {
 button {
   font-family: HarryP;
   cursor: pointer;
+}
+
+table,
+thead,
+tr {
+  width: 100%;
+}
+
+table {
+  display: table;
+  background-color: var(--muted-navy);
+  border: var(--gryffindor-yellow) 0.1rem solid;
+
+  border-collapse: collapse;
+}
+
+thead {
+  width: 100%;
+  background-color: var(--charcoal);
+  color: aliceblue;
+  text-align: left;
+  padding: 1rem 0;
+  font-size: 1.25rem;
+}
+
+table tr:nth-child(even) {
+  background-color: var(--slytherin-silver);
+  color: var(--muted-navy);
+}
+
+td,
+th {
+  padding: 0.5rem 0;
+}
+
+td:nth-child(1),
+th:nth-child(1) {
+  padding-left: 1rem;
 }
 
 /* ------ Media Queries ------ */

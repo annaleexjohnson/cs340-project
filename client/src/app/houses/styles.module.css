@@ -6,26 +6,30 @@
   gap: 5vw;
 }
 
-.addHouseForm {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2vw;
-}
-
-.addHouseContainer {
-  text-align: center;
-}
-
 .displayHousesContainer {
   width: 100%;
+  background-color: var(--muted-navy);
+  padding: 2vw;
+  border: var(--gryffindor-yellow) 0.1rem solid;
+  font-size: 0.75rem;
 }
-.displayHousesTable {
-  width: 100%;
+
+.displayHousesContainer h3 {
   text-align: center;
 }
 
-.displayHousesContainer table,
-.displayHousesTable th,
-.displayHousesTable td {
-  border: 1px solid black;
+.deleteButton {
+  color: white;
+  max-width: fit-content;
+}
+
+.deleteButton:hover {
+  color: var(--charcoal);
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 768px) {
+  .displayHousesContainer {
+    font-size: 1rem;
+  }
 }
