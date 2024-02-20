@@ -6,9 +6,13 @@ const AddHouse = () => {
   const [houseName, setHouseName] = useState("");
   const [houseFounder, setHouseFounder] = useState("");
 
+  const clearForms = () => {
+    setHouseName("");
+    setHouseFounder("");
+  };
+
   const addHouse = async (e) => {
     e.preventDefault();
-    console.log(houseName, houseFounder);
 
     fetch("/api/houseInfo", {
       method: "POST",
@@ -24,6 +28,7 @@ const AddHouse = () => {
 
       if (res.status === 200) {
         alert("Added wizard to database!");
+        clearForms();
       }
     });
   };
@@ -36,6 +41,7 @@ const AddHouse = () => {
           <div className={styles.formInputGroup}>
             <label>House Name:</label>
             <input
+              value={houseName}
               type="text"
               placeholder="Hogwarts"
               onChange={(e) => {
@@ -47,6 +53,7 @@ const AddHouse = () => {
           <div className={styles.formInputGroup}>
             <label>House Founder:</label>
             <input
+              value={houseFounder}
               type="text"
               placeholder="Dumbledore"
               onChange={(e) => {

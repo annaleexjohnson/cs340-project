@@ -14,16 +14,20 @@ export async function GET(req) {
 }
 
 export async function POST(req, res) {
-  const house = await req.JSON();
+  const house = await req.json();
+  console.log(house);
   const newHouseName = house.houseName;
   const newHouseFounder = house.houseFounder;
 
-  const insertQuery = `INSERT INTO Houses(house_name, house_founder) VALUES (${newHouseName}, ${newHouseFounder});`;
+  const insertQuery = `INSERT INTO Houses(house_name, house_founder) VALUES ('${newHouseName}', '${newHouseFounder}');`;
 
   const conn = await db.getConnection();
   const insertHouse = await conn.query(insertQuery);
   console.log(insertHouse);
   conn.release();
 
-  return res.send({ status: 200, message: "Added house to database!" });
+  return NextResponse.json(
+    { message: "Added house to database!" },
+    { status: 200 }
+  );
 }
