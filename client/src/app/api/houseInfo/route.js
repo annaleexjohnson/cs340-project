@@ -25,5 +25,5 @@ export async function POST(req, res) {
   console.log(insertHouse);
   conn.release();
 
-  return Response;
+  return res.send({ status: 200, message: "Added house to database!" });
 }

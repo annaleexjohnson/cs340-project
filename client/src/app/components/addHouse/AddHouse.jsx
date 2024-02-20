@@ -6,8 +6,11 @@ const AddHouse = () => {
   const [houseName, setHouseName] = useState("");
   const [houseFounder, setHouseFounder] = useState("");
 
-  const addHouse = async () => {
-    const req = await fetch("/api/houseInfo", {
+  const addHouse = async (e) => {
+    e.preventDefault();
+    console.log(houseName, houseFounder);
+
+    fetch("/api/houseInfo", {
       method: "POST",
       body: JSON.stringify({
         houseName: houseName,
@@ -16,22 +19,20 @@ const AddHouse = () => {
       headers: {
         "Content-type": "application/json; charset=UTF-8",
       },
-    });
+    }).then((res) => {
+      console.log(res);
 
-    const res = await req.JSON();
-    console.log(res);
+      if (res.status === 200) {
+        alert("Added wizard to database!");
+      }
+    });
   };
 
   return (
     <>
       <div className={styles.addHouseContainer}>
         <h2>Add New House</h2>
-        <form
-          className={styles.addHouseForm}
-          onSubmit={() => {
-            addHouse;
-          }}
-        >
+        <form className={styles.addHouseForm} onSubmit={addHouse}>
           <div className={styles.formInputGroup}>
             <label>House Name:</label>
             <input
