@@ -1,0 +1,54 @@
+.addWizardContainer,
+.addWizardForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.addWizardContainer {
+  width: 100%;
+  background-color: var(--muted-navy);
+  padding: 5vw 0;
+  border: var(--gryffindor-yellow) 0.1rem solid;
+}
+
+.formInputGroup {
+  width: 100%;
+}
+
+.addWizardForm select {
+  margin-left: 5%;
+  width: 50%;
+}
+
+.addWizardForm button {
+  padding: 2%;
+  background-color: var(--hufflepuff-canary);
+  border: var(--ravenclaw-gold) 0.4rem solid;
+  color: var(--muted-navy);
+  width: 10rem;
+  height: 3rem;
+  font-size: 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.addWizardForm button:hover {
+  color: aliceblue;
+}
+
+/* Medium */
+@media only screen and (min-width: 768px) {
+  .addWizardContainer {
+    max-width: 50vw;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .addWizardContainer {
+    max-width: 35vw;
+  }
+}

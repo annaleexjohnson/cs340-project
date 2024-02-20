@@ -1,12 +1,15 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import styles from "./styles.module.css";
+import AddWizard from "../components/addWizard/AddWizard";
 
 export default function Wizards() {
   return (
     <>
       <div className={styles.container}>
         <h1>Hogwarts Witch & Wizards</h1>
+
+        <AddWizard />
 
         <div className={styles.wizardSearchContainer}>
           <h3>Search for Witch/Wizard in Database</h3>
@@ -18,35 +21,6 @@ export default function Wizards() {
             </div>
 
             <button>Search</button>
-          </form>
-        </div>
-
-        <div className={styles.addWizardContainer}>
-          <h3>Add Witch/Wizard to Database</h3>
-          <form className={styles.addWizardForm}>
-            <div className={styles.addWizardInput}>
-              <label>Wizard Name:</label>
-              <input type="text" placeholder="Parry Hotter"></input>
-            </div>
-            <div className={styles.addWizardInput}>
-              <label>Wizard House:</label>
-              <select>
-                <option value="Gryffindor">Gryffindor</option>
-                <option value="Slytherin">Slytherin</option>
-                <option value="Ravenclaw">Ravenclaw</option>
-                <option value="Hufflepuff">Hufflepuff</option>
-              </select>
-            </div>
-            <div className={styles.addWizardInput}>
-              <label>Graduated?</label>
-              <select>
-                <option value="graduated">Yes</option>
-                <option value="notGraduated">No</option>
-              </select>
-            </div>
-            <div className={styles.addWizardSubmit}>
-              <button>Add Wizard</button>
-            </div>
           </form>
         </div>
 
