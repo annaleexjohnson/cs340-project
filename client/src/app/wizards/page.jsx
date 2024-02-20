@@ -29,9 +29,6 @@ export default function Wizards() {
           <td>{house}</td>
           <td>{graduated ? "Yes" : "No"}</td>
           <td>
-            <MdModeEdit />
-          </td>
-          <td>
             <MdDeleteForever />
           </td>
         </tr>
@@ -54,7 +51,6 @@ export default function Wizards() {
                   <th>Name</th>
                   <th>House</th>
                   <th>Graduated?</th>
-                  <th>Edit</th>
                   <th>Delete</th>
                 </tr>
               </thead>
