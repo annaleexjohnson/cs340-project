@@ -5,21 +5,21 @@ import AddHouse from "../components/addHouse/AddHouse";
 import { MdDeleteForever } from "react-icons/md";
 
 export default function Houses() {
-  const [houseInfo, setHouseInfo] = useState({});
+  // const [houseInfo, setHouseInfo] = useState({});
 
   // fetch house names on page load
-  useEffect(() => {
-    const fetchHouseInfo = async () => {
-      const res = await fetch("/api/houseInfo", {
-        method: "GET",
-      });
-      const houses = await res.json();
-      console.log(houses);
-      setHouseInfo(houses);
-    };
+  // useEffect(() => {
+  //   const fetchHouseInfo = async () => {
+  //     const res = await fetch("/api/houseInfo", {
+  //       method: "GET",
+  //     });
+  //     const houses = await res.json();
+  //     console.log(houses);
+  //     setHouseInfo(houses);
+  //   };
 
-    fetchHouseInfo();
-  }, []);
+  //   fetchHouseInfo();
+  // }, []);
 
   const HouseRow = ({ name, founder }) => {
     return (
@@ -34,6 +34,13 @@ export default function Houses() {
       </React.Fragment>
     );
   };
+
+  const houseInfo = [
+    { house_name: "Gryffindor", house_founder: "Godric Gryffindor" },
+    { house_name: "Hufflepuff", house_founder: "Helga Hufflepuff" },
+    { house_name: "Ravenclaw", house_founder: "Rowena Ravenclaw" },
+    { house_name: "Slytherin", house_founder: "Salazar Slytherin" },
+  ];
 
   return (
     <>
