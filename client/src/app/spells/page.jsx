@@ -8,19 +8,6 @@ export default function Spells() {
       <div className={styles.container}>
         <h1>Spells</h1>
 
-        <div className={styles.spellSearchContainer}>
-          <h3>Search for Spells</h3>
-
-          <form className={styles.spellSearchForm}>
-            <div>
-              <label>Enter Spell Name:</label>
-              <input type="text" placeholder="Wingdarium"></input>
-            </div>
-
-            <button>Search</button>
-          </form>
-        </div>
-
         <div className={styles.addSpellContainer}>
           <h3>Add a Spell</h3>
 
