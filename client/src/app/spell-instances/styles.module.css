@@ -33,3 +33,22 @@
 .displayInstancesTable td {
   border: 1px solid black;
 }
+
+.editModalContainer {
+  position: relative;
+  background-color: var(--muted-navy);
+  padding: 5vw;
+  border: var(--gryffindor-yellow) 0.1rem solid;
+}
+.closeEditModal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 5% 5% 0 0;
+}
+
+.editButton,
+.deleteButton,
+.closeEditModal {
+  cursor: pointer;
+}
