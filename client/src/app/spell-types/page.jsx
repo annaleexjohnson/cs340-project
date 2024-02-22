@@ -92,8 +92,14 @@ export default function Types() {
                 <th>Delete</th>
               </tr>
             </thead>
-            {dummyTypeData.map((type) => {
-              return <TypeRow name={type.type_name} desc={type.type_desc} />;
+            {dummyTypeData.map((type, index) => {
+              return (
+                <TypeRow
+                  key={index}
+                  name={type.type_name}
+                  desc={type.type_desc}
+                />
+              );
             })}
             <tbody></tbody>
           </table>

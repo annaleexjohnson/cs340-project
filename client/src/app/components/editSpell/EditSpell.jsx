@@ -53,8 +53,8 @@ const EditSpell = ({ name, type, description }) => {
                 setChangeType(e.target.value());
               }}
             >
-              {dummyTypeData.map((type) => {
-                return <TypeOption name={type.type_name} />;
+              {dummyTypeData.map((type, index) => {
+                return <TypeOption key={index} name={type.type_name} />;
               })}
             </select>
           </div>

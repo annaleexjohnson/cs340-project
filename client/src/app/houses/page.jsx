@@ -61,6 +61,7 @@ export default function Houses() {
                 {dummyHouseData.map((house, index) => {
                   return (
                     <HouseRow
+                      key={index}
                       name={house.house_name}
                       founder={house.house_founder}
                     />

@@ -85,9 +85,10 @@ export default function Instances() {
             </thead>
 
             <tbody>
-              {dummyInstanceData.map((instance) => {
+              {dummyInstanceData.map((instance, index) => {
                 return (
                   <InstanceRow
+                    key={index}
                     spell={instance.spell}
                     wizard={instance.wizard}
                     notes={instance.notes}

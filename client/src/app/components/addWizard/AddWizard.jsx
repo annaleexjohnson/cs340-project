@@ -71,8 +71,8 @@ const AddWizard = () => {
           <div className={styles.formInputGroup}>
             <label>House:</label>
             <select>
-              {dummyHouseData.map((house) => {
-                return <option>{house.house_name}</option>;
+              {dummyHouseData.map((house, index) => {
+                return <option key={index}>{house.house_name}</option>;
               })}
             </select>
           </div>

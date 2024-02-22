@@ -143,8 +143,8 @@ export default function Spells() {
             <div className={styles.addSpellInput}>
               <label>Spell Type:</label>
               <select>
-                {dummyTypeData.map((type) => {
-                  return <TypeOption name={type.type_name} />;
+                {dummyTypeData.map((type, index) => {
+                  return <TypeOption key={index} name={type.type_name} />;
                 })}
               </select>
             </div>

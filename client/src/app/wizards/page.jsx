@@ -113,9 +113,10 @@ export default function Wizards() {
               </thead>
 
               <tbody>
-                {dummyWizardData.map((wizard) => {
+                {dummyWizardData.map((wizard, index) => {
                   return (
                     <WizardRow
+                      key={index}
                       name={wizard.wizard_name}
                       house={wizard.house_name}
                       graduated={wizard.wizard_graduated}
