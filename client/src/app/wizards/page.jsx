@@ -21,6 +21,34 @@ export default function Wizards() {
     fetchWizards();
   }, []);
 
+  const dummyWizardData = [
+    {
+      house_name: "Gryffindor",
+      wizard_graduated: 1,
+      wizard_name: "Harry Potter",
+    },
+    {
+      house_name: "Hufflepuff",
+      wizard_graduated: 1,
+      wizard_name: "Newton Scamander",
+    },
+    {
+      house_name: "Slytherin",
+      wizard_graduated: 1,
+      wizard_name: "Draco Malfoy",
+    },
+    {
+      house_name: "Gryffindor",
+      wizard_graduated: 1,
+      wizard_name: "Sirius Black",
+    },
+    {
+      house_name: "Hufflepuff",
+      wizard_graduated: 1,
+      wizard_name: "Nymphadora Tonks",
+    },
+  ];
+
   const WizardRow = ({ name, house, graduated }) => {
     return (
       <React.Fragment>
@@ -38,7 +66,7 @@ export default function Wizards() {
 
   return (
     <>
-      {wizards && (
+      {dummyWizardData && (
         <div className={styles.container}>
           <h1>Hogwarts Witch & Wizards</h1>
 
@@ -56,7 +84,7 @@ export default function Wizards() {
               </thead>
 
               <tbody>
-                {wizards.map((wizard) => {
+                {dummyWizardData.map((wizard) => {
                   return (
                     <WizardRow
                       name={wizard.wizard_name}

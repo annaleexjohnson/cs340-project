@@ -5,21 +5,21 @@ import AddHouse from "../components/addHouse/AddHouse";
 import { MdDeleteForever } from "react-icons/md";
 
 export default function Houses() {
-  // const [houseInfo, setHouseInfo] = useState({});
+  const [houseInfo, setHouseInfo] = useState([]);
 
   // fetch house names on page load
-  // useEffect(() => {
-  //   const fetchHouseInfo = async () => {
-  //     const res = await fetch("/api/houseInfo", {
-  //       method: "GET",
-  //     });
-  //     const houses = await res.json();
-  //     console.log(houses);
-  //     setHouseInfo(houses);
-  //   };
+  useEffect(() => {
+    const fetchHouseInfo = async () => {
+      const res = await fetch("/api/houseInfo", {
+        method: "GET",
+      });
+      const houses = await res.json();
+      console.log(houses);
+      setHouseInfo(houses);
+    };
 
-  //   fetchHouseInfo();
-  // }, []);
+    fetchHouseInfo();
+  }, []);
 
   const HouseRow = ({ name, founder }) => {
     return (
@@ -35,7 +35,7 @@ export default function Houses() {
     );
   };
 
-  const houseInfo = [
+  const dummyHouseData = [
     { house_name: "Gryffindor", house_founder: "Godric Gryffindor" },
     { house_name: "Hufflepuff", house_founder: "Helga Hufflepuff" },
     { house_name: "Ravenclaw", house_founder: "Rowena Ravenclaw" },
@@ -44,7 +44,7 @@ export default function Houses() {
 
   return (
     <>
-      {houseInfo && (
+      {dummyHouseData && (
         <div className={styles.container}>
           <h1>Hogwarts Houses</h1>
           <div className={styles.displayHousesContainer}>
@@ -58,7 +58,7 @@ export default function Houses() {
                 </tr>
               </thead>
               <tbody>
-                {houseInfo.map((house, index) => {
+                {dummyHouseData.map((house, index) => {
                   return (
                     <HouseRow
                       name={house.house_name}

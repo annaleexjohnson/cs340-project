@@ -24,6 +24,13 @@ const AddWizard = () => {
     e.preventDefault();
   };
 
+  const dummyHouseData = [
+    { house_name: "Gryffindor" },
+    { house_name: "Slytherin" },
+    { house_name: "Hufflepuff" },
+    { house_name: "Ravenclaw" },
+  ];
+
   return (
     <>
       <div className={styles.addWizardContainer}>
@@ -64,7 +71,7 @@ const AddWizard = () => {
           <div className={styles.formInputGroup}>
             <label>House:</label>
             <select>
-              {houses.map((house) => {
+              {dummyHouseData.map((house) => {
                 return <option>{house.house_name}</option>;
               })}
             </select>
