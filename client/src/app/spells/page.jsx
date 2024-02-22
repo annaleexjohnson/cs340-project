@@ -152,6 +152,7 @@ export default function Spells() {
               <label>Spell Description:</label>
               <input type="text" placeholder="levitates objects"></input>
             </div>
+            <button type="submit">Add Spell</button>
           </form>
         </div>
       </div>
