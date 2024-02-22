@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "forever": "^4.0.3",
     "mariadb": "^3.2.3",
     "next": "14.1.0",
     "react": "^18",
