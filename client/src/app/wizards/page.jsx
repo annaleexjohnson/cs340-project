@@ -3,23 +3,40 @@ import React, { useState, useEffect } from "react";
 import styles from "./styles.module.css";
 import AddWizard from "../components/addWizard/AddWizard";
 import { MdDeleteForever, MdModeEdit } from "react-icons/md";
+import { IoIosCloseCircle } from "react-icons/io";
+import EditWizard from "../components/editWizard/EditWizard";
 
 export default function Wizards() {
   const [wizards, setWizards] = useState([]);
+  const [openEditModal, setOpenEditModal] = useState(false);
+  const [editName, setEditName] = useState("");
+  const [editHouse, setEditHouse] = useState("");
+  const [editGraduated, setEditGraduated] = useState("");
+
+  const editWizardInfo = (name, house, graduated) => {
+    setEditName(name);
+    setEditHouse(house);
+    setEditGraduated(graduated);
+  };
+  const resetEditForm = () => {
+    setEditName("");
+    setEditHouse("");
+    setEditGraduated("");
+  };
 
   // fetch wizards on page load
-  useEffect(() => {
-    const fetchWizards = async () => {
-      const res = await fetch("/api/wizardInfo", {
-        method: "GET",
-      });
-      const wizards = await res.json();
-      console.log(wizards);
-      setWizards(wizards);
-    };
+  // useEffect(() => {
+  //   const fetchWizards = async () => {
+  //     const res = await fetch("/api/wizardInfo", {
+  //       method: "GET",
+  //     });
+  //     const wizards = await res.json();
+  //     console.log(wizards);
+  //     setWizards(wizards);
+  //   };
 
-    fetchWizards();
-  }, []);
+  //   fetchWizards();
+  // }, []);
 
   const dummyWizardData = [
     {
@@ -56,7 +73,17 @@ export default function Wizards() {
           <td>{name}</td>
           <td>{house}</td>
           <td>{graduated ? "Yes" : "No"}</td>
-          <td>
+          <td
+            className={styles.editButton}
+            onClick={() => {
+              console.log(name, house, graduated);
+              editWizardInfo(name, house, graduated);
+              setOpenEditModal(true);
+            }}
+          >
+            <MdModeEdit />
+          </td>
+          <td className={styles.deleteButton}>
             <MdDeleteForever />
           </td>
         </tr>
@@ -66,10 +93,11 @@ export default function Wizards() {
 
   return (
     <>
-      {dummyWizardData && (
-        <div className={styles.container}>
-          <h1>Hogwarts Witch & Wizards</h1>
+      (
+      <div className={styles.container}>
+        <h1>Hogwarts Witch & Wizards</h1>
 
+        {dummyWizardData && (
           <div className={styles.displayWizardsContainer}>
             <h3>List of Witches & Wizards: </h3>
 
@@ -79,6 +107,7 @@ export default function Wizards() {
                   <th>Name</th>
                   <th>House</th>
                   <th>Graduated?</th>
+                  <th>Edit</th>
                   <th>Delete</th>
                 </tr>
               </thead>
@@ -96,10 +125,30 @@ export default function Wizards() {
               </tbody>
             </table>
           </div>
+        )}
 
-          <AddWizard />
-        </div>
-      )}
+        {openEditModal && (
+          <div className={styles.editModalContainer}>
+            <div
+              className={styles.closeEditModal}
+              onClick={() => {
+                setOpenEditModal(false);
+                resetEditForm();
+              }}
+            >
+              <IoIosCloseCircle />
+            </div>
+            <EditWizard
+              name={editName}
+              house={editHouse}
+              graduated={editGraduated}
+            />
+          </div>
+        )}
+
+        <AddWizard />
+      </div>
+      )
     </>
   );
 }
