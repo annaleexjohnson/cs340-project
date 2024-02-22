@@ -103,9 +103,10 @@ export default function Spells() {
               </thead>
 
               <tbody>
-                {dummySpellData.map((spell) => {
+                {dummySpellData.map((spell, index) => {
                   return (
                     <SpellRow
+                      key={index}
                       name={spell.spell_name}
                       type={spell.spell_type}
                       desc={spell.spell_desc}
