@@ -8,19 +8,6 @@ export default function Instances() {
       <div className={styles.container}>
         <h1>Spell Instances</h1>
 
-        <div className={styles.instanceSearchContainer}>
-          <h3>Search for an Instance By Spell Name</h3>
-
-          <form className={styles.instanceSearchForm}>
-            <div>
-              <label>Enter Spell Name:</label>
-              <input type="text" placeholder="Wingdarium"></input>
-            </div>
-
-            <button>Search</button>
-          </form>
-        </div>
-
         <div className={styles.addInstanceContainer}>
           <h3>Add a Spell Instance</h3>
 
