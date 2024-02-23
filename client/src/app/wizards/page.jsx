@@ -1,14 +1,17 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styles from "./styles.module.css";
 import AddWizard from "../components/addWizard/AddWizard";
 import { MdDeleteForever, MdModeEdit } from "react-icons/md";
 import { IoIosCloseCircle } from "react-icons/io";
 import EditWizard from "../components/editWizard/EditWizard";
+import { useAppContext } from "../context/index.js";
 
 export default function Wizards() {
+  const { wizardsArr, setWizardsArr } = useAppContext();
   const [wizards, setWizards] = useState([]);
   const [openEditModal, setOpenEditModal] = useState(false);
+  const { editWizardModal, setEditWizardModal } = useAppContext();
   const [editName, setEditName] = useState("");
   const [editHouse, setEditHouse] = useState("");
   const [editGraduated, setEditGraduated] = useState("");
@@ -25,46 +28,19 @@ export default function Wizards() {
   };
 
   // fetch wizards on page load
-  // useEffect(() => {
-  //   const fetchWizards = async () => {
-  //     const res = await fetch("/api/wizardInfo", {
-  //       method: "GET",
-  //     });
-  //     const wizards = await res.json();
-  //     console.log(wizards);
-  //     setWizards(wizards);
-  //   };
+  useEffect(() => {
+    async function fetchWizards() {
+      const res = await fetch("/api/wizardInfo", {
+        method: "GET",
+      });
 
-  //   fetchWizards();
-  // }, []);
+      const wizards = await res.json();
+      console.log(wizards);
+      setWizards(wizards);
+    }
 
-  const dummyWizardData = [
-    {
-      house_name: "Gryffindor",
-      wizard_graduated: 1,
-      wizard_name: "Harry Potter",
-    },
-    {
-      house_name: "Hufflepuff",
-      wizard_graduated: 1,
-      wizard_name: "Newton Scamander",
-    },
-    {
-      house_name: "Slytherin",
-      wizard_graduated: 1,
-      wizard_name: "Draco Malfoy",
-    },
-    {
-      house_name: "Gryffindor",
-      wizard_graduated: 1,
-      wizard_name: "Sirius Black",
-    },
-    {
-      house_name: "Hufflepuff",
-      wizard_graduated: 1,
-      wizard_name: "Nymphadora Tonks",
-    },
-  ];
+    fetchWizards();
+  }, [editWizardModal]);
 
   const WizardRow = ({ name, house, graduated }) => {
     return (
@@ -78,7 +54,7 @@ export default function Wizards() {
             onClick={() => {
               console.log(name, house, graduated);
               editWizardInfo(name, house, graduated);
-              setOpenEditModal(true);
+              setEditWizardModal(true);
             }}
           >
             <MdModeEdit />
@@ -93,11 +69,10 @@ export default function Wizards() {
 
   return (
     <>
-      (
       <div className={styles.container}>
         <h1>Hogwarts Witch & Wizards</h1>
 
-        {dummyWizardData && (
+        {wizards && (
           <div className={styles.displayWizardsContainer}>
             <h3>List of Witches & Wizards: </h3>
 
@@ -113,7 +88,7 @@ export default function Wizards() {
               </thead>
 
               <tbody>
-                {dummyWizardData.map((wizard, index) => {
+                {wizards.map((wizard, index) => {
                   return (
                     <WizardRow
                       key={index}
@@ -128,12 +103,12 @@ export default function Wizards() {
           </div>
         )}
 
-        {openEditModal && (
+        {editWizardModal && (
           <div className={styles.editModalContainer}>
             <div
               className={styles.closeEditModal}
               onClick={() => {
-                setOpenEditModal(false);
+                setEditWizardModal(false);
                 resetEditForm();
               }}
             >
@@ -149,7 +124,6 @@ export default function Wizards() {
 
         <AddWizard />
       </div>
-      )
     </>
   );
 }

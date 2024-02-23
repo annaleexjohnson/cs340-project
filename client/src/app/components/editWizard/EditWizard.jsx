@@ -1,15 +1,42 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import styles from "./styles.module.css";
+import { useAppContext } from "../../context/index.js";
 
 const EditWizard = ({ name, house, graduated }) => {
+  const { editWizardModal, setEditWizardModal } = useAppContext();
   const [changeName, setChangeName] = useState(name);
   const [changeHouse, setChangeHouse] = useState(house);
-  const [changeGraduted, setChangeGraduated] = useState(graduated);
+  const [changeGraduated, setChangeGraduated] = useState(graduated);
+  const [loading, setLoading] = useState("");
 
-  useEffect(() => {
-    // get wizard row based on name and house
-  }, []);
+  const updateWizard = async (e) => {
+    e.preventDefault();
+
+    setLoading("Loading...");
+
+    await fetch("/api/wizardInfo", {
+      method: "POST",
+      body: JSON.stringify({
+        newName: changeName,
+        newHouse: changeHouse,
+        newGraduated: changeGraduated,
+        originalName: name,
+        originalHouse: house,
+        originalGraduated: graduated,
+      }),
+    }).then((res) => {
+      setLoading("");
+
+      if (res.status === 200) {
+        alert("Updated wizard");
+      } else {
+        alert("Couldn't update wizard :(");
+      }
+    });
+
+    setEditWizardModal(false);
+  };
 
   return (
     <>
@@ -22,7 +49,7 @@ const EditWizard = ({ name, house, graduated }) => {
               type="text"
               value={changeName}
               onChange={(e) => {
-                setChangeName(e.target.value());
+                setChangeName(e.target.value);
               }}
             ></input>
           </div>
@@ -32,23 +59,32 @@ const EditWizard = ({ name, house, graduated }) => {
               type="text"
               value={changeHouse}
               onChange={(e) => {
-                setChangeHouse(e.target.value());
+                setChangeHouse(e.target.value);
               }}
             ></input>
           </div>
           <div className={styles.formInputGroup}>
             <label>Graduated?</label>
             <select
-              value={changeGraduted}
               onChange={(e) => {
-                setChangeGraduated(e.target.value());
+                setChangeGraduated(e.target.value);
               }}
             >
-              <option>Yes</option>
-              <option>No</option>
+              <option>--</option>
+              <option value={1}>Yes</option>
+              <option value={0}>No</option>
             </select>
           </div>
-          <button type="submit">Edit Wizard</button>
+
+          <div>{loading}</div>
+
+          <button
+            onClick={(e) => {
+              updateWizard(e);
+            }}
+          >
+            Edit Wizard
+          </button>
         </form>
       </div>
     </>

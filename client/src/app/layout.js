@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Lato, Bigelow_Rules, Exo_2 } from "next/font/google";
+import { AppWrapper } from "./context/index.js";
 import Navbar from "./components/navBar/Navbar";
 
 const bigelowRules = Bigelow_Rules({
@@ -24,7 +25,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${bigelowRules.variable} ${exo.variable}`}>
         <Navbar />
-        {children}
+        <AppWrapper>{children}</AppWrapper>
       </body>
     </html>
   );
