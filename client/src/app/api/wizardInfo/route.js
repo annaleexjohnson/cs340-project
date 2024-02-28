@@ -7,12 +7,15 @@ export async function GET(req) {
   const selectQuery =
     "SELECT Wizards.wizard_name, Wizards.wizard_graduated, Houses.house_name FROM Wizards, Houses WHERE Wizards.wizard_house = Houses.house_id GROUP BY Wizards.wizard_name;";
 
-  const conn = await db.getConnection();
-  const wizards = await conn.query(selectQuery);
-  console.log(wizards);
-  conn.release();
-
-  return NextResponse.json(wizards);
+  try {
+    const conn = await db.getConnection();
+    const wizards = await conn.query(selectQuery);
+    console.log(wizards);
+    conn.release();
+    return NextResponse.json(wizards);
+  } catch (err) {
+    return NextResponse.json({ error: err });
+  }
 }
 
 // Update wizard
