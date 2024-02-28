@@ -34,6 +34,10 @@ export default function Wizards() {
         method: "GET",
       });
 
+      if (!res.ok) {
+        throw new Error("Couldn't retrieve wizards from database");
+      }
+
       const wizards = await res.json();
       console.log(wizards);
       setWizards(wizards);
