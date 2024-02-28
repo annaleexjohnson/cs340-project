@@ -20,16 +20,19 @@ const AddWizard = () => {
     fetchHouseNames();
   }, []);
 
-  const addWizard = (e) => {
-    e.preventDefault();
+  const HouseOption = ({ houseName }) => {
+    return (
+      <React.Fragment>
+        <option value={houseName}>{houseName}</option>
+      </React.Fragment>
+    );
   };
 
-  const dummyHouseData = [
-    { house_name: "Gryffindor" },
-    { house_name: "Slytherin" },
-    { house_name: "Hufflepuff" },
-    { house_name: "Ravenclaw" },
-  ];
+  const addWizard = (e) => {
+    e.preventDefault();
+
+    
+  };
 
   return (
     <>
@@ -71,8 +74,8 @@ const AddWizard = () => {
           <div className={styles.formInputGroup}>
             <label>House:</label>
             <select>
-              {dummyHouseData.map((house, index) => {
-                return <option key={index}>{house.house_name}</option>;
+              {houses.map((house, index) => {
+                return <HouseOption key={index} houseName={house.house_name} />;
               })}
             </select>
           </div>
