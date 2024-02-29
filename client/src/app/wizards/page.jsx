@@ -13,6 +13,7 @@ export default function Wizards() {
   const [editName, setEditName] = useState("");
   const [editHouse, setEditHouse] = useState("");
   const [editGraduated, setEditGraduated] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const editWizardInfo = (name, house, graduated) => {
     setEditName(name);
@@ -28,11 +29,16 @@ export default function Wizards() {
   // fetch wizards on page load
   useEffect(() => {
     async function fetchWizards() {
+      setLoading(true);
+
       await fetch("/api/wizardInfo", {
         method: "GET",
       })
         .then((res) => res.json())
-        .then((data) => setWizards(data.wizards));
+        .then((data) => {
+          setWizards(data.wizards);
+          setLoading(false);
+        });
     }
 
     fetchWizards();
@@ -67,6 +73,7 @@ export default function Wizards() {
     <>
       <div className={styles.container}>
         <h1>Hogwarts Witch & Wizards</h1>
+        {loading && <div>Loading wizards...</div>}
 
         {wizards && (
           <div className={styles.displayWizardsContainer}>
@@ -118,7 +125,7 @@ export default function Wizards() {
           </div>
         )}
 
-        <AddWizard />
+        {wizards && <AddWizard />}
       </div>
     </>
   );
