@@ -70,7 +70,7 @@ const EditWizard = ({ name, house, graduated }) => {
                 setChangeGraduated(e.target.value);
               }}
             >
-              <option>--</option>
+              <option value={1}>--</option>
               <option value={1}>Yes</option>
               <option value={0}>No</option>
             </select>

@@ -1,16 +1,14 @@
 "use client";
 import React, { useState, useEffect, useContext } from "react";
 import styles from "./styles.module.css";
-import AddWizard from "../components/addWizard/AddWizard";
 import { MdDeleteForever, MdModeEdit } from "react-icons/md";
 import { IoIosCloseCircle } from "react-icons/io";
+import AddWizard from "../components/addWizard/AddWizard";
 import EditWizard from "../components/editWizard/EditWizard";
 import { useAppContext } from "../context/index.js";
 
 export default function Wizards() {
-  const { wizardsArr, setWizardsArr } = useAppContext();
-  const [wizards, setWizards] = useState([]);
-  const [openEditModal, setOpenEditModal] = useState(false);
+  const [wizards, setWizards] = useState(null);
   const { editWizardModal, setEditWizardModal } = useAppContext();
   const [editName, setEditName] = useState("");
   const [editHouse, setEditHouse] = useState("");
@@ -30,17 +28,11 @@ export default function Wizards() {
   // fetch wizards on page load
   useEffect(() => {
     async function fetchWizards() {
-      const res = await fetch("../api/wizardInfo", {
+      await fetch("/api/wizardInfo", {
         method: "GET",
-      });
-
-      if (!res.ok) {
-        throw new Error("Couldn't retrieve wizards from database");
-      }
-
-      const wizards = await res.json();
-      console.log(wizards);
-      setWizards(wizards);
+      })
+        .then((res) => res.json())
+        .then((data) => setWizards(data.wizards));
     }
 
     fetchWizards();
