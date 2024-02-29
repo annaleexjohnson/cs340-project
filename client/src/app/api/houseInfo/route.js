@@ -9,7 +9,7 @@ export async function GET(req) {
     const conn = await db.getConnection();
     const houseInfo = await conn.query(selectQuery);
     console.log(houseInfo);
-    conn.release();
+    conn.end();
 
     return NextResponse.json(houseInfo);
   } catch (err) {
@@ -28,7 +28,7 @@ export async function GET(req) {
 //   const conn = await db.getConnection();
 //   const insertHouse = await conn.query(insertQuery);
 //   console.log(insertHouse);
-//   conn.release();
+//   conn.end();
 
 //   return NextResponse.json(
 //     { message: "Added house to database!" },

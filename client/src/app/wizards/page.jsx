@@ -20,7 +20,6 @@ export default function Wizards() {
   // fetches wizards from route
   async function fetchWizards() {
     setLoading(true);
-
     await fetch("/api/getWizardsRoute", {
       method: "GET",
     })

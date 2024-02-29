@@ -16,7 +16,7 @@ export async function POST(req) {
   try {
     const conn = await db.getConnection();
     const wizards = await conn.query(insertQuery);
-    conn.release();
+    conn.end();
     return NextResponse.json({ message: "Added wizard!" }, { status: 200 });
   } catch (err) {
     return NextResponse.json({ error: err });

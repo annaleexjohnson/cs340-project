@@ -10,7 +10,7 @@ export async function GET(req) {
   try {
     const conn = await db.getConnection();
     const wizards = await conn.query(selectQuery);
-    conn.release();
+    conn.end();
     return NextResponse.json({ wizards });
   } catch (err) {
     return NextResponse.json({ error: err });

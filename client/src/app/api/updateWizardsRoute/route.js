@@ -16,7 +16,7 @@ export async function POST(req) {
 
   const conn = await db.getConnection();
   const updateWizard = await conn.query(updateQuery);
-  conn.release();
+  conn.end();
 
   return NextResponse.json({ message: "Updated wizard!" }, { status: 200 });
 }
