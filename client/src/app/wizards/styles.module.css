@@ -53,3 +53,21 @@
 .closeEditModal {
   cursor: pointer;
 }
+
+.addWizardButton button {
+  padding: 2%;
+  background-color: var(--hufflepuff-canary);
+  border: var(--ravenclaw-gold) 0.4rem solid;
+  color: var(--muted-navy);
+  width: 10rem;
+  height: 3rem;
+  font-size: 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.addWizardButton button:hover {
+  color: aliceblue;
+}
