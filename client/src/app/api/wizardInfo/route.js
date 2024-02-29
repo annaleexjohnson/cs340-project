@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import pool from "../db-connector/route.js";
-const db = pool;
+const db = require("../db-connector/route.js");
 
 // Get list of wizards
 export async function GET(req) {
@@ -8,7 +7,7 @@ export async function GET(req) {
     "SELECT Wizards.wizard_name, Wizards.wizard_graduated, Houses.house_name FROM Wizards, Houses WHERE Wizards.wizard_house = Houses.house_id GROUP BY Wizards.wizard_name;";
 
   try {
-    const conn = await db.getConnection();
+    const conn = await db.pool.getConnection();
     const wizards = await conn.query(selectQuery);
     console.log(wizards);
     conn.release();
@@ -30,7 +29,7 @@ export async function POST(req) {
 
   const updateQuery = `UPDATE Wizards SET wizard_name = '${newName}', wizard_graduated = ${newGraduated}, wizard_house = (SELECT house_id FROM Houses WHERE house_name = '${newHouse}') WHERE wizard_id = (SELECT wizard_id from Wizards WHERE wizard_name = '${originalName}' AND wizard_graduated = ${originalGraduated} AND wizard_house = (SELECT house_id FROM Houses WHERE house_name = '${originalHouse}'));`;
 
-  const conn = await db.getConnection();
+  const conn = await db.pool.getConnection();
   const updateWizard = await conn.query(updateQuery);
   conn.release();
 

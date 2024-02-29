@@ -1,11 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import pool from "../db-connector/route.js";
-const db = pool;
+const db = require("../db-connector/route.js");
 
 export async function GET(req) {
   const selectQuery = "SELECT house_name, house_founder FROM Houses;";
 
-  const conn = await db.getConnection();
+  const conn = await db.pool.getConnection();
   const houseInfo = await conn.query(selectQuery);
   console.log(houseInfo);
   conn.release();
@@ -21,7 +20,7 @@ export async function POST(req, res) {
 
   const insertQuery = `INSERT INTO Houses(house_name, house_founder) VALUES ('${newHouseName}', '${newHouseFounder}');`;
 
-  const conn = await db.getConnection();
+  const conn = await db.pool.getConnection();
   const insertHouse = await conn.query(insertQuery);
   console.log(insertHouse);
   conn.release();
