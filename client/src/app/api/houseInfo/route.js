@@ -5,12 +5,16 @@ const db = pool;
 export async function GET(req) {
   const selectQuery = "SELECT house_name, house_founder FROM Houses;";
 
-  const conn = await db.getConnection();
-  const houseInfo = await conn.query(selectQuery);
-  console.log(houseInfo);
-  conn.release();
+  try {
+    const conn = await db.getConnection();
+    const houseInfo = await conn.query(selectQuery);
+    console.log(houseInfo);
+    conn.release();
 
-  return NextResponse.json(houseInfo);
+    return NextResponse.json(houseInfo);
+  } catch (err) {
+    return NextResponse.json({ error: err });
+  }
 }
 
 // export async function POST(req, res) {
