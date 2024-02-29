@@ -30,12 +30,9 @@ export default function Wizards() {
   // fetch wizards on page load
   useEffect(() => {
     async function fetchWizards() {
-      const res = await fetch(
-        "https://cs340-project-kappa.vercel.app/api/wizardInfo",
-        {
-          method: "GET",
-        }
-      );
+      const res = await fetch("../api/wizardInfo", {
+        method: "GET",
+      });
 
       if (!res.ok) {
         throw new Error("Couldn't retrieve wizards from database");
