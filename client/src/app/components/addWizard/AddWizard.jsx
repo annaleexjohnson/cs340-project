@@ -66,6 +66,7 @@ const AddWizard = () => {
         <div
           className={styles.closeAddModal}
           onClick={() => {
+            resetAddForm();
             setAddWizardModal(false);
           }}
         >

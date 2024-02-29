@@ -1,0 +1,49 @@
+.editWizardContainer {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--muted-navy);
+  padding: 5vw;
+  border: var(--gryffindor-yellow) 0.1rem solid;
+}
+
+.editWizardContainer button {
+  padding: 2%;
+  background-color: var(--hufflepuff-canary);
+  border: var(--ravenclaw-gold) 0.4rem solid;
+  color: var(--muted-navy);
+  width: 10rem;
+  height: 3rem;
+  font-size: 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.editWizardContainer button:hover {
+  color: aliceblue;
+}
+
+.closeEditModal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 5% 5% 0 0;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 768px) {
+  .editWizardContainer {
+    max-width: 50vw;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .editWizardContainer {
+    max-width: 35vw;
+  }
+}

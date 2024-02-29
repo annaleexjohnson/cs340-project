@@ -17,35 +17,32 @@ export default function Wizards() {
   const [editGraduated, setEditGraduated] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const editWizardInfo = (name, house, graduated) => {
-    setEditName(name);
-    setEditHouse(house);
-    setEditGraduated(graduated);
-  };
-  const resetEditForm = () => {
-    setEditName("");
-    setEditHouse("");
-    setEditGraduated("");
-  };
+  // fetches wizards from route
+  async function fetchWizards() {
+    setLoading(true);
 
-  // fetch wizards on page load
+    await fetch("/api/getWizardsRoute", {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setWizards(data.wizards);
+        setLoading(false);
+      });
+  }
+
+  // fetch wizards on page load and when new wizard is added
   useEffect(() => {
-    async function fetchWizards() {
-      setLoading(true);
-
-      await fetch("/api/getWizardsRoute", {
-        method: "GET",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          setWizards(data.wizards);
-          setLoading(false);
-        });
-    }
-
     fetchWizards();
-  }, [editWizardModal, addWizardModal]);
+  }, [addWizardModal]);
 
+  // fetch wizards and resent form when wizard is edited
+  useEffect(() => {
+    resetEditForm();
+    fetchWizards;
+  }, [editWizardModal]);
+
+  // row component to hold wizards
   const WizardRow = ({ name, house, graduated }) => {
     return (
       <React.Fragment>
@@ -71,11 +68,42 @@ export default function Wizards() {
     );
   };
 
+  // edit wizard function
+  const editWizardInfo = (name, house, graduated) => {
+    setEditName(name);
+    setEditHouse(house);
+    setEditGraduated(graduated);
+  };
+
+  // reset edit form
+  const resetEditForm = () => {
+    setEditName("");
+    setEditHouse("");
+    setEditGraduated("");
+  };
+
   return (
     <>
       <div className={styles.container}>
         <h1>Hogwarts Witch & Wizards</h1>
         {loading && <div>Loading wizards...</div>}
+        {wizards && (
+          <div className={styles.addWizardButton}>
+            <button
+              onClick={() => {
+                setAddWizardModal(true);
+              }}
+            >
+              Add Wizard
+            </button>
+          </div>
+        )}
+
+        {addWizardModal && (
+          <div className={styles.modalContainer}>
+            <AddWizard />
+          </div>
+        )}
 
         {wizards && (
           <div className={styles.displayWizardsContainer}>
@@ -108,29 +136,8 @@ export default function Wizards() {
           </div>
         )}
 
-        {wizards && (
-          <div className={styles.addWizardButton}>
-            <button
-              onClick={() => {
-                setAddWizardModal(true);
-              }}
-            >
-              Add Wizard
-            </button>
-          </div>
-        )}
-
         {editWizardModal && (
-          <div className={styles.editModalContainer}>
-            <div
-              className={styles.closeEditModal}
-              onClick={() => {
-                setEditWizardModal(false);
-                resetEditForm();
-              }}
-            >
-              <IoIosCloseCircle />
-            </div>
+          <div className={styles.modalContainer}>
             <EditWizard
               name={editName}
               house={editHouse}
@@ -138,8 +145,6 @@ export default function Wizards() {
             />
           </div>
         )}
-
-        {addWizardModal && <AddWizard />}
       </div>
     </>
   );

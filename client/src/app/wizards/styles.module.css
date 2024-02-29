@@ -35,17 +35,15 @@
   border: 1px solid black;
 }
 
-.editModalContainer {
-  position: relative;
-  background-color: var(--muted-navy);
-  padding: 5vw;
-  border: var(--gryffindor-yellow) 0.1rem solid;
-}
-.closeEditModal {
+.modalContainer {
   position: absolute;
   top: 0;
-  right: 0;
-  margin: 5% 5% 0 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .editButton,

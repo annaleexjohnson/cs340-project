@@ -1,6 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import styles from "./styles.module.css";
+import { IoIosCloseCircle } from "react-icons/io";
+
 import { useAppContext } from "../../context/index.js";
 
 const EditWizard = ({ name, house, graduated }) => {
@@ -40,9 +42,18 @@ const EditWizard = ({ name, house, graduated }) => {
 
   return (
     <>
-      <div>
+      <div className={styles.editWizardContainer}>
+        <div
+          className={styles.closeEditModal}
+          onClick={() => {
+            setEditWizardModal(false);
+          }}
+        >
+          <IoIosCloseCircle />
+        </div>
+        <h3>Update Wizard</h3>
+
         <form>
-          <h3>Update Wizard</h3>
           <div className={styles.formInputGroup}>
             <label>Wizard Name:</label>
             <input
@@ -77,15 +88,14 @@ const EditWizard = ({ name, house, graduated }) => {
           </div>
 
           <div>{loading}</div>
-
-          <button
-            onClick={(e) => {
-              updateWizard(e);
-            }}
-          >
-            Edit Wizard
-          </button>
         </form>
+        <button
+          onClick={(e) => {
+            updateWizard(e);
+          }}
+        >
+          Edit Wizard
+        </button>
       </div>
     </>
   );
