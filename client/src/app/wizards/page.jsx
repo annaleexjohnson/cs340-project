@@ -10,6 +10,8 @@ import { useAppContext } from "../context/index.js";
 export default function Wizards() {
   const [wizards, setWizards] = useState(null);
   const { editWizardModal, setEditWizardModal } = useAppContext();
+  const { addWizardModal, setAddWizardModal } = useAppContext();
+
   const [editName, setEditName] = useState("");
   const [editHouse, setEditHouse] = useState("");
   const [editGraduated, setEditGraduated] = useState("");
@@ -31,7 +33,7 @@ export default function Wizards() {
     async function fetchWizards() {
       setLoading(true);
 
-      await fetch("/api/wizardInfo", {
+      await fetch("/api/getWizardsRoute", {
         method: "GET",
       })
         .then((res) => res.json())
@@ -42,7 +44,7 @@ export default function Wizards() {
     }
 
     fetchWizards();
-  }, [editWizardModal]);
+  }, [editWizardModal, addWizardModal]);
 
   const WizardRow = ({ name, house, graduated }) => {
     return (
@@ -106,6 +108,18 @@ export default function Wizards() {
           </div>
         )}
 
+        {wizards && (
+          <div className={styles.addWizardButton}>
+            <button
+              onClick={() => {
+                setAddWizardModal(true);
+              }}
+            >
+              Add Wizard
+            </button>
+          </div>
+        )}
+
         {editWizardModal && (
           <div className={styles.editModalContainer}>
             <div
@@ -125,7 +139,7 @@ export default function Wizards() {
           </div>
         )}
 
-        {wizards && <AddWizard />}
+        {addWizardModal && <AddWizard />}
       </div>
     </>
   );

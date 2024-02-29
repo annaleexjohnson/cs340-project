@@ -15,7 +15,7 @@ const EditWizard = ({ name, house, graduated }) => {
 
     setLoading("Loading...");
 
-    await fetch("/api/wizardInfo", {
+    await fetch("/api/updateWizardsRoute", {
       method: "POST",
       body: JSON.stringify({
         newName: changeName,

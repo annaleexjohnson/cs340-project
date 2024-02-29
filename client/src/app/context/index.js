@@ -5,12 +5,15 @@ const AppContext = createContext([]);
 
 export function AppWrapper({ children }) {
   let [editWizardModal, setEditWizardModal] = useState(false);
+  let [addWizardModal, setAddWizardModal] = useState(false);
 
   return (
     <AppContext.Provider
       value={{
         editWizardModal,
         setEditWizardModal,
+        addWizardModal,
+        setAddWizardModal,
       }}
     >
       {children}
