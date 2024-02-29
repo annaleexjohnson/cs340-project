@@ -7,6 +7,7 @@
 }
 
 .addWizardContainer {
+  position: relative;
   width: 100%;
   background-color: var(--muted-navy);
   padding: 5vw 0;
@@ -38,6 +39,14 @@
 
 .addWizardForm button:hover {
   color: aliceblue;
+}
+
+.closeAddModal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 5% 5% 0 0;
+  cursor: pointer;
 }
 
 /* Medium */

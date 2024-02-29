@@ -64,6 +64,7 @@ const AddWizard = () => {
     <>
       <div className={styles.addWizardContainer}>
         <div
+          className={styles.closeAddModal}
           onClick={() => {
             setAddWizardModal(false);
           }}
