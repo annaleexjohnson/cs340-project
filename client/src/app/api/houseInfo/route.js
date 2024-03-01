@@ -11,7 +11,7 @@ export async function GET(req) {
     console.log(houseInfo);
     conn.end();
 
-    return NextResponse.json(houseInfo);
+    return NextResponse.json({ houseInfo });
   } catch (err) {
     return NextResponse.json({ error: err });
   }
