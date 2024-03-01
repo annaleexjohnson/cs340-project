@@ -9,17 +9,18 @@ const AddWizard = () => {
   const [lastName, setLastName] = useState("");
   const [house, setHouse] = useState(null);
   const [graduated, setGraduated] = useState(null);
-  const [housesList, setHousesList] = useState([]);
+  const [housesList, setHousesList] = useState(null);
   const { addWizardModal, setAddWizardModal } = useAppContext();
 
   useEffect(() => {
     const fetchHouseNames = async () => {
-      const res = await fetch("/api/houseInfo", {
+      await fetch("/api/houseInfo", {
         method: "GET",
-      });
-      const houses = await res.json();
-      console.log(houses);
-      setHousesList(houses);
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setHousesList(data.houseInfo);
+        });
     };
 
     fetchHouseNames();
@@ -108,21 +109,25 @@ const AddWizard = () => {
           </div>
 
           {/* Hogwarts House */}
-          <div className={styles.formInputGroup}>
-            <label>House:</label>
-            <select
-              required
-              value={house}
-              onChange={(e) => {
-                setHouse(e.target.value);
-              }}
-            >
-              <option>--</option>
-              {housesList.map((house, index) => {
-                return <HouseOption key={index} houseName={house.house_name} />;
-              })}
-            </select>
-          </div>
+          {housesList && (
+            <div className={styles.formInputGroup}>
+              <label>House:</label>
+              <select
+                required
+                value={house}
+                onChange={(e) => {
+                  setHouse(e.target.value);
+                }}
+              >
+                <option>--</option>
+                {housesList.map((house, index) => {
+                  return (
+                    <HouseOption key={index} houseName={house.house_name} />
+                  );
+                })}
+              </select>
+            </div>
+          )}
 
           <div className={styles.formInputGroup}>
             <label>Graduated?</label>
