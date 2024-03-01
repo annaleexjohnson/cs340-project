@@ -7,6 +7,7 @@ import { useAppContext } from "../../context/index.js";
 
 const EditWizard = ({ name, house, graduated }) => {
   const { editWizardModal, setEditWizardModal } = useAppContext();
+  const [originalName, setOriginalName] = useState(name);
   const [changeName, setChangeName] = useState(name);
   const [changeHouse, setChangeHouse] = useState(house);
   const [changeGraduated, setChangeGraduated] = useState(graduated);
@@ -23,9 +24,7 @@ const EditWizard = ({ name, house, graduated }) => {
         newName: changeName,
         newHouse: changeHouse,
         newGraduated: changeGraduated,
-        originalName: name,
-        originalHouse: house,
-        originalGraduated: graduated,
+        originalName: originalName,
       }),
     }).then((res) => {
       setLoading("");

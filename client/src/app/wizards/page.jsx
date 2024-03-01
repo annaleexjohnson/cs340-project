@@ -50,13 +50,8 @@ export default function Wizards() {
   // fetch wizards on page load and when new wizard is added
   useEffect(() => {
     fetchWizards();
-  }, [addWizardModal]);
-
-  // fetch wizards and resent form when wizard is edited
-  useEffect(() => {
     resetEditForm();
-    fetchWizards;
-  }, [editWizardModal]);
+  }, [addWizardModal, editWizardModal]);
 
   // row component to hold wizards
   const WizardRow = ({ name, house, graduated }) => {
@@ -69,7 +64,6 @@ export default function Wizards() {
           <td
             className={styles.editButton}
             onClick={() => {
-              console.log(name, house, graduated);
               editWizardInfo(name, house, graduated);
               setEditWizardModal(true);
             }}
