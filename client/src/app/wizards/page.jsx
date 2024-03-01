@@ -30,6 +30,23 @@ export default function Wizards() {
       });
   }
 
+  async function deleteWizards(wizardName) {
+    console.log(wizardName);
+    await fetch("/api/deleteWizardsRoute", {
+      method: "DELETE",
+      body: JSON.stringify({
+        name: wizardName,
+      }),
+    }).then((res) => {
+      if (res.status === 200) {
+        alert("Deleted wizard!");
+        fetchWizards();
+      } else {
+        alert("Could not delete wizard :(");
+      }
+    });
+  }
+
   // fetch wizards on page load and when new wizard is added
   useEffect(() => {
     fetchWizards();
@@ -59,7 +76,12 @@ export default function Wizards() {
           >
             <MdModeEdit />
           </td>
-          <td className={styles.deleteButton}>
+          <td
+            className={styles.deleteButton}
+            onClick={() => {
+              deleteWizards(name);
+            }}
+          >
             <MdDeleteForever />
           </td>
         </tr>
